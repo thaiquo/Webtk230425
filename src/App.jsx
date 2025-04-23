@@ -72,9 +72,9 @@ function App() {
   }
 
   const handleDeleteProduct = (id) => {
-    if (confirm("Bạn có chắc chắn muốn xoá sản phẩm này?")) {
-      setProducts(products.filter((product) => product.id !== id))
-    }
+    // Xóa confirm để kiểm tra xem có phải vấn đề từ hộp thoại xác nhận không
+    setProducts(products.filter((product) => product.id !== id))
+    console.log("Đã xóa sản phẩm có id:", id) // Thêm log để debug
   }
 
   const handleSearch = (e) => {

@@ -1,12 +1,43 @@
-export default function ProductItem({ product }) {
-    return (
-      <div className="grid grid-cols-5 gap-2 items-center border-b px-2 py-1">
-        <div>{product.name}</div>
-        <div>{product.price.toLocaleString()} đ</div>
-        <div>{product.category}</div>
-        <div>{product.stock}</div>
-        <button className="text-gray-400 cursor-not-allowed">Xoá</button>
-      </div>
-    );
+"use client"
+
+function ProductItem({ product, onDelete }) {
+  const handleDelete = () => {
+    // Gọi hàm onDelete và truyền id của sản phẩm
+    onDelete(product.id)
   }
-  
+
+  return (
+    <tr className="hover:bg-gray-50 border-b">
+      <td className="py-3 px-4 border-b">
+        <div className="font-medium">{product.name}</div>
+      </td>
+      <td className="py-3 px-4 border-b text-right">
+        <div className="font-medium text-gray-900">{product.price.toLocaleString()} đ</div>
+      </td>
+      <td className="py-3 px-4 border-b">
+        <span
+          className={`px-2 py-1 rounded-full text-xs font-medium
+          ${product.category === "Thời trang" ? "bg-purple-100 text-purple-800" : ""}
+          ${product.category === "Công nghệ" ? "bg-blue-100 text-blue-800" : ""}
+          ${product.category === "Gia dụng" ? "bg-yellow-100 text-yellow-800" : ""}
+        `}
+        >
+          {product.category}
+        </span>
+      </td>
+      <td className="py-3 px-4 border-b text-right">
+        <div className={`font-medium ${product.stock < 10 ? "text-red-600" : "text-gray-900"}`}>{product.stock}</div>
+      </td>
+      <td className="py-3 px-4 border-b text-center">
+        <button
+          onClick={handleDelete}
+          className="bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded-full text-sm transition-colors"
+        >
+          Xoá
+        </button>
+      </td>
+    </tr>
+  )
+}
+
+export default ProductItem
