@@ -1,6 +1,7 @@
 import React from 'react';
 
 const ProductList = () => {
+  // Dữ liệu sản phẩm mẫu (có thể thay thế bằng dữ liệu từ API hoặc state sau này)
   const products = [
     { id: 1, name: 'Áo thun', price: 100000, category: 'Thời trang', stock: 20 },
     { id: 2, name: 'Điện thoại', price: 20000000, category: 'Công nghệ', stock: 10 },
@@ -17,7 +18,7 @@ const ProductList = () => {
             <th>Giá</th>
             <th>Danh mục</th>
             <th>Tồn kho</th>
-            <th>Hành động</th>
+            <th>Hành động</th> {/* Cột cho nút Xoá */}
           </tr>
         </thead>
         <tbody>
@@ -28,7 +29,7 @@ const ProductList = () => {
               <td>{product.category}</td>
               <td>{product.stock}</td>
               <td>
-                <button>Xoá</button>
+                <button>Xoá</button>  {/* Nút Xoá (chưa có chức năng) */}
               </td>
             </tr>
           ))}
