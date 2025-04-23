@@ -1,13 +1,6 @@
 import React from 'react';
 
-const ProductList = () => {
-  // Dữ liệu sản phẩm mẫu (có thể thay thế bằng dữ liệu từ API hoặc state sau này)
-  const products = [
-    { id: 1, name: 'Áo thun', price: 100000, category: 'Thời trang', stock: 20 },
-    { id: 2, name: 'Điện thoại', price: 20000000, category: 'Công nghệ', stock: 10 },
-    { id: 3, name: 'Nồi cơm điện', price: 1500000, category: 'Gia dụng', stock: 15 },
-  ];
-
+const ProductList = ({ products, onDelete }) => { // Nhận onDelete từ props
   return (
     <div>
       <h2>Danh sách sản phẩm</h2>
@@ -18,7 +11,7 @@ const ProductList = () => {
             <th>Giá</th>
             <th>Danh mục</th>
             <th>Tồn kho</th>
-            <th>Hành động</th> {/* Cột cho nút Xoá */}
+            <th>Hành động</th>
           </tr>
         </thead>
         <tbody>
@@ -29,7 +22,7 @@ const ProductList = () => {
               <td>{product.category}</td>
               <td>{product.stock}</td>
               <td>
-                <button>Xoá</button>  {/* Nút Xoá (chưa có chức năng) */}
+                <button onClick={() => onDelete(product.id)}>Xoá</button>
               </td>
             </tr>
           ))}
